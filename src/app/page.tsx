@@ -1,26 +1,28 @@
 "use client";
 
 import React, { useState } from "react";
-import SimulationForm from "@/components/SimulationForm";
-import SimulationResult from "@/components/SimulationResult";
+import SimulationForm from "@/app/components/SimulationForm";
+import SimulationResult from "@/app/components/SimulationResult";
 import { generateSimulationData } from "@/utils/dataGenerator";
+import { SimulationInput, SimulationData } from "@/types";
 
-const HomePage: React.FC = () => {
-    const [simulationData, setSimulationData] = useState<any | null>(null);
+const Page: React.FC = () => {
+    const [simulationData, setSimulationData] = useState<SimulationData | null>(null);
 
-    const handleSimulation = (input: any) => {
+    const handleFormSubmit = (input: SimulationInput) => {
         const data = generateSimulationData(input);
         setSimulationData(data);
     };
 
     return (
-        <div className="space-y-8">
-            <SimulationForm onSubmit={handleSimulation} />
+        <div className="p-6 bg-gray-50 min-h-screen">
+            <SimulationForm onSubmit={handleFormSubmit} />
             {simulationData && <SimulationResult data={simulationData} />}
         </div>
     );
 };
 
-export default HomePage;
+export default Page;
+
 
 

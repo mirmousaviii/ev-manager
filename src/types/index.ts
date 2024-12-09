@@ -3,15 +3,19 @@ export interface ChargePointConfig {
 }
 
 export interface SimulationInput {
-    chargePoints: number; // Total number of charge points
-    chargePointConfigs: ChargePointConfig[]; // Array of charge point configurations
-    arrivalProbability: number; // Multiplier for arrival probability (20–200%)
-    carConsumption: number; // Consumption of the cars (kWh)
+    chargePoints: number;
+    chargePointConfigs: { power: number }[];
+    arrivalProbability: number; // Percentage (20-200%)
+    carConsumption: number; // kWh
 }
 
 export interface SimulationData {
-    hourlyCharging: number[]; // Hourly charging data
-    totalEnergy: number; // Total energy charged (kWh)
-    chargingEvents: number; // Total number of charging events
-    peakPower: number; // Peak power demand (kW)
+    hourlyCharging: number[][];
+    totalEnergy: number; // kWh
+    chargingEvents: number; // Daily events (for backward compatibility)
+    peakPower: number; // kW
+    dailyEvents: number;
+    weeklyEvents: number;
+    monthlyEvents: number;
+    yearlyEvents: number;
 }
