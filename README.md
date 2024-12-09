@@ -39,6 +39,8 @@ The application includes the following features:
 - **Dynamic Input Form:** Add customizable parameters for charging stations.
 - **Simulation Output:** Displays results like total energy consumption, peak load, and charging point usage.
 - **Responsive Design:** Works seamlessly across devices.
+- **Bar Chart Visualization:** Visual representation of hourly charging values.
+- **Heatmap Visualization:** Visual representation of hourly charging heatmap.
 
 ## **Screenshots**
 
@@ -82,6 +84,7 @@ The project is built using the following technologies:
 - **React 19**: JavaScript library for building user interfaces.
 - **Next.js 15**: React-based framework for server-side rendering.
 - **Tailwind CSS**: For utility-first styling.
+- **D3.js**: Data visualization library for creating interactive charts.
 - **TypeScript**: Ensures type safety and scalability.
 - **ESLint**: Linter for code quality and consistency.
 - **CSS Variables**: Customizable theme with dynamic styling.
@@ -135,16 +138,16 @@ The project is organized into the following directories:
 src/
 ├── app/
 │   ├── components/          # Reusable UI components
-│   │   ├── InputForm.tsx    # Form for input parameters
-│   │   ├── OutputDisplay.tsx # Displays simulation results
+│   │   ├── SimulationForm/  # Input form for simulation parameters
+│   │   ├── SimulationResult.tsx # Displays bar chart and heatmap
 │   ├── styles/              # Global and component-specific styles
 │   │   ├── globals.css      # Global Tailwind CSS configurations
 │   ├── page.tsx             # Home page of the application
 │   ├── layout.tsx           # Root layout for the application
 ├── types/                   # TypeScript type definitions
 │   ├── index.ts             # Input and output data types
+├── utils/                   # Utility functions for simulation
 ├── public/                  # Static assets (e.g., favicon, fonts)
-
 ```
 
 ---
