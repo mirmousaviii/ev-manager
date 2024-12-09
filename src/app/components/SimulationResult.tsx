@@ -1,8 +1,8 @@
-import React, { useEffect, useRef } from "react";
+import React, {useEffect, useRef} from "react";
 import * as d3 from "d3";
-import { SimulationData } from "@/types";
+import {SimulationData, SimulationInput} from "@/types";
 
-const SimulationResult: React.FC<{ data: SimulationData }> = ({ data }) => {
+const SimulationResult: React.FC<{ data: SimulationData, inputData: SimulationInput }> = ({data, inputData}) => {
     const chartRef = useRef<SVGSVGElement | null>(null);
     const heatmapRef = useRef<SVGSVGElement | null>(null);
 
@@ -14,7 +14,7 @@ const SimulationResult: React.FC<{ data: SimulationData }> = ({ data }) => {
 
             const width = 800;
             const height = 400;
-            const margin = { top: 20, right: 30, bottom: 50, left: 60 };
+            const margin = {top: 20, right: 30, bottom: 50, left: 60};
             const chartWidth = width - margin.left - margin.right;
             const chartHeight = height - margin.top - margin.bottom;
 
@@ -62,8 +62,7 @@ const SimulationResult: React.FC<{ data: SimulationData }> = ({ data }) => {
                 .attr("y", margin.top / 2)
                 .attr("text-anchor", "middle")
                 .attr("font-size", "16px")
-                .attr("font-weight", "bold")
-                .text("Hourly Charging Values (kW)");
+                .attr("font-weight", "bold");
         }
 
         // Heatmap Rendering
@@ -73,7 +72,7 @@ const SimulationResult: React.FC<{ data: SimulationData }> = ({ data }) => {
 
             const width = 800;
             const height = 400;
-            const margin = { top: 20, right: 30, bottom: 50, left: 60 };
+            const margin = {top: 20, right: 30, bottom: 50, left: 60};
             const chartWidth = width - margin.left - margin.right;
             const chartHeight = height - margin.top - margin.bottom;
 
@@ -133,16 +132,31 @@ const SimulationResult: React.FC<{ data: SimulationData }> = ({ data }) => {
                 .attr("y", margin.top / 2)
                 .attr("text-anchor", "middle")
                 .attr("font-size", "16px")
-                .attr("font-weight", "bold")
-                .text("Hourly Charging Heatmap");
+                .attr("font-weight", "bold");
         }
     }, [data]);
 
     return (
-        <div className="bg-gradient-to-b from-blue-50 to-white p-6 shadow-md rounded-lg space-y-8">
+        <div className="mt-4 space-y-6 p-8 bg-white shadow-md rounded-lg max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-gray-800 text-center">Simulation Results</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="p-4 bg-white rounded-lg shadow-md">
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                <div className="col-span-1 bg-white shadow-md p-4">
+                    <h3 className="text-lg font-semibold text-gray-700">Simulation Data</h3>
+                    <ul className="mt-4 space-y-2 text-gray-600">
+                        <li>Charge Points: <strong>{inputData.chargePoints}</strong></li>
+                        <li>Average Charging
+                            Power: <strong>{(inputData.chargePointConfigs.reduce((acc, config) => acc + config.power, 0) / inputData.chargePoints).toFixed(2)} kW</strong>
+                        </li>
+                        <li>Sum of Charging
+                            Power: <strong>{inputData.chargePointConfigs.reduce((acc, config) => acc + config.power, 0)} kW</strong>
+                        </li>
+                        <li>Arrival Probability: <strong>{inputData.arrivalProbability}%</strong></li>
+                        <li>Car Consumption: <strong>{inputData.carConsumption} kWh</strong></li>
+                    </ul>
+                </div>
+
+                <div className="col-span-1 bg-white shadow-md p-4">
                     <h3 className="text-lg font-semibold text-gray-700">Summary</h3>
                     <ul className="mt-4 space-y-2 text-gray-600">
                         <li>Total Energy Charged: <strong>{data.totalEnergy.toFixed(2)}</strong> kWh</li>
@@ -153,18 +167,20 @@ const SimulationResult: React.FC<{ data: SimulationData }> = ({ data }) => {
                         <li>Yearly Charging Events: <strong>{data.yearlyEvents}</strong></li>
                     </ul>
                 </div>
-                <div className="p-4 bg-white rounded-lg shadow-md">
-                    <h3 className="text-lg font-semibold text-gray-700">Bar Chart</h3>
-                    <svg
-                        ref={chartRef}
-                        viewBox={`0 0 800 400`}
-                        preserveAspectRatio="xMidYMid meet"
-                        className="w-full h-auto"
-                    ></svg>
-                </div>
             </div>
-            <div className="p-4 bg-white rounded-lg shadow-md">
-                <h3 className="text-lg font-semibold text-gray-700">Heatmap</h3>
+
+            <div className="p-4 bg-white shadow-md">
+                <h3 className="text-lg font-semibold text-gray-700">Charging Values (kW)</h3>
+                <svg
+                    ref={chartRef}
+                    viewBox={`0 0 800 400`}
+                    preserveAspectRatio="xMidYMid meet"
+                    className="w-full h-auto"
+                ></svg>
+            </div>
+
+            <div className="p-4 bg-white shadow-md">
+                <h3 className="text-lg font-semibold text-gray-700">Charging Heatmap</h3>
                 <svg
                     ref={heatmapRef}
                     viewBox={`0 0 800 400`}

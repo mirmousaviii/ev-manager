@@ -8,8 +8,10 @@ import { SimulationInput, SimulationData } from "@/types";
 
 const Page: React.FC = () => {
     const [simulationData, setSimulationData] = useState<SimulationData | null>(null);
+    const [simulationInput, setSimulationInput] = useState<SimulationInput | null>(null);
 
     const handleFormSubmit = (input: SimulationInput) => {
+        setSimulationInput(input);
         const data = generateSimulationData(input);
         setSimulationData(data);
     };
@@ -17,7 +19,10 @@ const Page: React.FC = () => {
     return (
         <div className="p-6 bg-gray-50 min-h-screen">
             <SimulationForm onSubmit={handleFormSubmit} />
-            {simulationData && <SimulationResult data={simulationData} />}
+            {simulationData && <SimulationResult
+                data={simulationData as SimulationData}
+                inputData={simulationInput as SimulationInput}
+            />}
         </div>
     );
 };
