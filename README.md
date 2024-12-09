@@ -6,14 +6,18 @@ A simple web application to simulate and manage electric vehicle (EV) charging s
 
 ## **Table of Contents**
 - [Overview](#overview)
+- [Live Demo](#live-demo)
 - [Features](#features)
 - [Screenshots](#screenshots)
 - [Usage](#usage)
+- [Output Results](#output-results)
 - [Future Improvements](#future-improvements)
 - [Technologies Used](#technologies-used)
 - [Installation](#installation)
 - [Project Structure](#project-structure)
 - [Contributing](#contributing)
+- [Authors](#authors)
+- [Acknowledgements](#acknowledgements)
 - [License](#license)
 
 
@@ -30,6 +34,13 @@ This is where EV Manager comes in. It's a lightweight simulation tool that helps
 - Calculate the total energy consumption of EV charging stations.
 - Analyze peak loads and daily charging events.
 - Manage charging points efficiently.
+
+---
+
+## **Live Demo**
+Check out the live demo of the application:
+
+[https://ev-manager.vercel.app](https://ev-manager.vercel.app/)
 
 ---
 
