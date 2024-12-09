@@ -17,10 +17,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-    <body className="antialiased">
-        {children}
-    </body>
-    </html>
+      <html lang="en">
+          <body className="bg-background text-foreground font-sans">
+              <header className="p-4 bg-primary text-secondary shadow-md">
+                <h1 className="text-2xl font-bold">EV Manager</h1>
+              </header>
+              <main className="p-4">{children}</main>
+          </body>
+      </html>
   );
 }

@@ -5,13 +5,33 @@
 :root {
     --background: #f9fafb;
     --foreground: #111827;
-    --primary: #3b82f6;
-    --secondary: #6b7280;
-    --accent: #10b981;
+    --primary: #2563eb;
+    --secondary: #ffffff;
+    --accent: #14b8a6;
+
+    --input-border: #d1d5db;
+    --input-focus: #2563eb;
 }
 
 body {
-    background-color: var(--background);
-    color: var(--foreground);
-    font-family: Arial, Helvetica, sans-serif;
+    @apply bg-background text-foreground font-sans;
+}
+
+input,
+select {
+    @apply border rounded px-3 py-2 shadow-sm;
+    border-color: var(--input-border);
+    &:focus {
+        @apply ring-1 ring-primary;
+        border-color: var(--input-focus);
+    }
+}
+
+button {
+    @apply rounded py-2 px-4 shadow-md transition duration-200;
+    background-color: var(--primary);
+    color: var(--secondary);
+    &:hover {
+        background-color: var(--accent);
+    }
 }
