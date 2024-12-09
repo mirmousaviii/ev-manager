@@ -45,36 +45,48 @@ The application includes the following features:
 ## **Screenshots**
 
 ### Home Page
-![Home Page](./screenshots/home-page.png)
+#### Simulation Form
+![Simulation form ](./screenshots/form.png)
 
-Coming Soon...
+#### Simulation Result
+![Simulation result](./screenshots/result.png)
+
+### Responsive Design
+![Responsive design](./screenshots/responsive.png)
+
+### Dynamic and Responsive Form
+![Dynamic and responsive form](./screenshots/responsive2.png)
 
 ---
 
 ## **Usage**
 ### **Input Parameters**
 1. Enter the following values in the input form:
-    - `Charge Points`: Number of available charging points.
-    - `Arrival Probability (%)`: Probability of EVs arriving at the station.
-    - `Car Consumption (kWh)`: Average energy consumption of cars.
-    - `Charging Power (kW)`: Maximum power of the charging stations.
+   - **Number of Charge Points:** Number of charging stations.
+   - **Default Charging Power:** Power rating of each charging station.
+   - **Charge Point [Number]:** Power usage at each charging point.
+   - **Arrival  probability:** The probability of a car arriving at the charging station.
+   - **Car consumption:** The amount of energy consumed by a car.
 
 2. Click the **Simulate** button to calculate results.
 
 ### **Output Results**
-- **Total Energy Consumption:** Total energy consumed by all EVs.
-- **Peak Load:** Maximum energy usage at peak times.
-- **Daily Charging Events:** Number of events per day.
-- **Charge Point Usage:** Power usage at each charging point.
+- **Total Energy Charged:** Total energy consumed by all charging stations.
+- **Peak Power Demand:** Maximum power demand during the simulation.
+- **Daily Charging Events:** Number of cars charged per day.
+- **Weekly Charging Events:** Number of cars charged per week.
+- **Monthly Charging Events:** Number of cars charged per month.
+- **Yearly Charging Events:** Number of cars charged per year.
+- **Bar Chart:** Hourly charging values for a charging station.
+- **Heatmap:** Hourly charging heatmap for all charging stations.
 
 ---
 
 ## **Future Improvements**
 Here are some ideas for improving the project:
+- Chart improvements like tooltips, legends, and animations.
+- Download simulation results as a CSV, PDF, or image.
 - Add a **dark mode** feature.
-- Integrate a **database** to store simulation results.
-- Add **graphs and charts** to visualize data.
-- Add **multi-language support** for broader accessibility.
 
 ---
 
@@ -89,7 +101,7 @@ The project is built using the following technologies:
 - **ESLint**: Linter for code quality and consistency.
 - **CSS Variables**: Customizable theme with dynamic styling.
 
-Todolist:
+#### Todolist:
 - **React Testing Library**: Testing framework for React components.
 - **Cypress**: End-to-end testing framework for web applications.
 - **Prettier**: Code formatter for consistent code style.
@@ -153,13 +165,34 @@ src/
 ---
 
 ## **Contributing**
-Contributions are always welcome! Here's how you can help:
-- **Report bugs** by opening a new issue.
-- **Suggest features** by opening a new issue.
-- **Submit pull requests** for bug fixes or new features.
-- **Improve documentation** by fixing typos or proposing changes.
+Contributions are always welcome! 
+
+Please adhere to the following guidelines:
+- Fork the repository.
+- Create a new branch (`git checkout -b feature`).
+- Make changes and commit them (`git commit -am 'Add new feature'`).
+- Push to the branch (`git push origin feature`).
+- Create a new Pull Request.
+- Feel free to open an issue if you have any questions or suggestions.
+- Please ensure that your pull request is up-to-date with the `main` branch.
+- Please ensure that your code passes the ESLint and Prettier checks.
+- Please ensure that your code is well-documented and follows best practices.
 
 ---
+
+## **Authors**
+- Mostafa Mirmousavi [@mirmousaviii](https://github.com/mirmousaviii) [https://mirmousavi.com](https://mirmousavi.com)
+
+---
+
+## **Acknowledgements**
+- [Reonic](https://reonic.com/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [React](https://reactjs.org/)
+- [Next.js](https://nextjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [D3.js](https://d3js.org/)
+- [ESLint](https://eslint.org/) 
 
 ## **License**
 This project is licensed under the MIT License. See the LICENSE file for details.
